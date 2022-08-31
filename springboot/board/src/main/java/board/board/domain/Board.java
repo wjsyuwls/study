@@ -1,11 +1,11 @@
-package board.board.dto;
+package board.board.domain;
 
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Data
-public class BoardDTO {
+public class Board {
     private int boardIdx;
     private String title;
     private String contents;

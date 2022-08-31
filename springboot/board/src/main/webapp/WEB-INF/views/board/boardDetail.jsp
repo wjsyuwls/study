@@ -48,25 +48,25 @@
     <a href="#this" id="delete" class="btn">삭제하기</a>
 </div>
 
-<%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>--%>
-<%--<script type="text/javascript">--%>
-<%--    $(document).ready(function(){--%>
-<%--        $("#list").on("click", function(){--%>
-<%--            location.href = "/board/openBoardList.do";--%>
-<%--        });--%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#list").on("click", function () {
+            location.href = "/board/openBoardList";
+        });
 
-<%--        $("#edit").on("click", function(){--%>
-<%--            var frm = $("#frm")[0];--%>
-<%--            frm.action = "/board/updateBoard.do";--%>
-<%--            frm.submit();--%>
-<%--        });--%>
+        $("#edit").on("click", function () {
+            var frm = $("#frm")[0];
+            frm.action = "/board/updateBoard";
+            frm.submit();
+        });
 
-<%--        $("#delete").on("click", function(){--%>
-<%--            var frm = $("#frm")[0];--%>
-<%--            frm.action = "/board/deleteBoard.do";--%>
-<%--            frm.submit();--%>
-<%--        });--%>
-<%--    });--%>
-<%--</script>--%>
+        $("#delete").on("click", function () {
+            var frm = $("#frm")[0];
+            frm.action = "/board/deleteBoard";
+            frm.submit();
+        });
+    });
+</script>
 </body>
 </html>

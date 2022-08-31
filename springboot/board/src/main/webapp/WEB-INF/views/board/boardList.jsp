@@ -31,7 +31,7 @@
                 <td class="title"><a href="/board/openBoardDetail?boardIdx=${list.boardIdx}">${list.title}</a></td>
                 <td>${list.hitCnt}</td>
                 <td>${list.createdDatetime}</td>
-<%--                <td><fmt:formatDate value="${list.createdDatetime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>--%>
+<%--                <td><fmt:formatDate value="${list.createdDatetime}" pattern="yyyy.MM.dd HH:mm:ss"/></td>--%>
             </c:forEach>
         </c:if>
         <c:if test="${list.size() == 0}">
