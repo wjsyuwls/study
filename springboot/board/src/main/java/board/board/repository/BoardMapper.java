@@ -3,7 +3,7 @@ package board.board.repository;
 import board.board.domain.Board;
 import board.board.domain.BoardFile;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,4 +23,8 @@ public interface BoardMapper {
     void deleteBoard(int boardIdx);
 
     void insertFileList(List<BoardFile> list);
+
+    List<BoardFile> selectBoardFileList(int boardIdx);
+
+    Optional<BoardFile> selectBoardFileInformation(@Param("idx") int idx, @Param("boardIdx") int boardIdx);
 }

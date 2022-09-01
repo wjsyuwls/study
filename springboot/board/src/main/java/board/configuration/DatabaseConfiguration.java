@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 
 @Configuration
-@PropertySource("classpath:/application.properties")
+//@PropertySource("classpath:/application.yml")
 @RequiredArgsConstructor
 @EnableTransactionManagement
 public class DatabaseConfiguration {

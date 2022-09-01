@@ -15,7 +15,8 @@
         ]]>
     </select>
 
-    <insert id="insertBoard" parameterType="board.board.domain.Board">
+    <insert id="insertBoard" parameterType="board.board.domain.Board" useGeneratedKeys="true"
+            keyProperty="boardIdx">
         insert into t_board (title, contents, created_datetime, creator_id)
         values (#{title}, #{contents}, NOW(), 'admin')
     </insert>
@@ -77,4 +78,23 @@
             )
         </foreach>
     </insert>
+
+    <select id="selectBoardFileList" parameterType="int" resultType="board.board.domain.BoardFile">
+        select idx,
+               board_idx,
+               original_file_name,
+               CONVERT((file_size / 1024), SIGNED) as file_size
+--                FORMAT(ROUND(file_size / 1024), 0) as file_size
+        from t_file
+        where board_idx = #{boardIdx}
+          and deleted_yn = 'N'
+    </select>
+
+    <select id="selectBoardFileInformation" parameterType="map" resultType="board.board.domain.BoardFile">
+        select original_file_name, stored_file_path, file_size
+        from t_file
+        where idx = #{idx}
+          and board_idx = #{boardIdx}
+          and deleted_yn = 'N'
+    </select>
 </mapper>

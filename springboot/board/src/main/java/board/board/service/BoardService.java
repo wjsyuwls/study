@@ -1,6 +1,7 @@
 package board.board.service;
 
 import board.board.domain.Board;
+import board.board.domain.BoardFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import java.util.List;
@@ -16,4 +17,6 @@ public interface BoardService {
     void updateBoard(Board board);
 
     void deleteBoard(int boardIdx);
+
+    Optional<BoardFile> selectBoardFileInformation(int idx, int boardIdx);
 }

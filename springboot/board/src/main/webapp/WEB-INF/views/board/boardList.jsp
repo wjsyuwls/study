@@ -27,11 +27,13 @@
         <tbody>
         <c:if test="${list.size() > 0}">
             <c:forEach var="list" items="${list}">
-                <td>${list.boardIdx}</td>
-                <td class="title"><a href="/board/openBoardDetail?boardIdx=${list.boardIdx}">${list.title}</a></td>
-                <td>${list.hitCnt}</td>
-                <td>${list.createdDatetime}</td>
-<%--                <td><fmt:formatDate value="${list.createdDatetime}" pattern="yyyy.MM.dd HH:mm:ss"/></td>--%>
+                <tr>
+                    <td>${list.boardIdx}</td>
+                    <td class="title"><a href="/board/${list.boardIdx}">${list.title}</a></td>
+                    <td>${list.hitCnt}</td>
+                    <td>${list.createdDatetime}</td>
+                        <%--                <td><fmt:formatDate value="${list.createdDatetime}" pattern="yyyy.MM.dd HH:mm:ss"/></td>--%>
+                </tr>
             </c:forEach>
         </c:if>
         <c:if test="${list.size() == 0}">
@@ -39,7 +41,7 @@
         </c:if>
         </tbody>
     </table>
-    <a href="/board/openBoardWrite" class="btn">글 쓰기</a>
+    <a href="/board/write" class="btn">글 쓰기</a>
 </div>
 </body>
 </html>

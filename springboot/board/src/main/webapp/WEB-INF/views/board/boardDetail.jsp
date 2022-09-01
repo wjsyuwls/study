@@ -1,8 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>board</title>
-    <link rel="stylesheet" type="text/css" href="../resources/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/style.css">
 </head>
 <body>
 <div class="container">
@@ -41,7 +42,14 @@
             </tbody>
         </table>
         <input type="hidden" id="boardIdx" name="boardIdx" value="${board.boardIdx }">
+        <input type="hidden" id="method" name="_method">
     </form>
+
+    <div class="file_list">
+        <c:forEach var="list" items="${board.fileList}">
+            <a href="/board/downloadBoardFile/${list.idx}/${list.boardIdx}">${list.originalFileName}(${list.fileSize}kb)</a>
+        </c:forEach>
+    </div>
 
     <a href="#this" id="list" class="btn">목록으로</a>
     <a href="#this" id="edit" class="btn">수정하기</a>
@@ -51,19 +59,25 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
+        var boardIdx = $("#boardIdx").val();
+
         $("#list").on("click", function () {
-            location.href = "/board/openBoardList";
+            location.href = "/board";
         });
 
         $("#edit").on("click", function () {
+            $('#method').val("put");
+
             var frm = $("#frm")[0];
-            frm.action = "/board/updateBoard";
+            frm.action = "/board/${board.boardIdx }";
             frm.submit();
         });
 
         $("#delete").on("click", function () {
+            $('#method').val("delete");
+
             var frm = $("#frm")[0];
-            frm.action = "/board/deleteBoard";
+            frm.action = "/board/${board.boardIdx }";
             frm.submit();
         });
     });
