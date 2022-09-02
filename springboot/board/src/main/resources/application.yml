@@ -20,6 +20,9 @@ devtools:
   livereload:
     enabled: true
 
+server:
+  port: 8000
+
 ---
 spring:
   profiles: dev

@@ -2,6 +2,8 @@ package board.board.web;
 
 import board.board.domain.Board;
 import board.board.domain.BoardFile;
+import board.board.paging.Criteria;
+import board.board.paging.PageDTO;
 import board.board.service.BoardService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -30,10 +32,14 @@ public class BoardController {
 
     @ApiOperation(value = "게시글 목록 조회")
     @GetMapping
-    public String openBoardList(Model model) {
-        List<Board> list = boardService.selectBoardList();
+    public String openBoardList(Model model, @ModelAttribute Criteria criteria) {
+        List<Board> list = boardService.selectBoardList(criteria);
+        PageDTO pageMaker = new PageDTO(3, boardService.getSize(), criteria);
         model.addAttribute("list", list);
+        model.addAttribute("pageMaker", pageMaker);
+
         log.info("list={}", list);
+        log.info("pageMaker={}", pageMaker);
 
         return "board/boardList";
     }

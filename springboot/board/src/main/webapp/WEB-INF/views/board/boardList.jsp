@@ -5,6 +5,38 @@
 <head>
     <title>board</title>
     <link rel="stylesheet" type="text/css" href="../resources/css/style.css">
+    <style type="text/css">
+        .paging {
+            color: blue;
+            text-decoration: none;
+        }
+
+        .currentPaging {
+            color: red;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        td > a:link {
+            color: black;
+            text-decoration: none;
+        }
+
+        td > a:visited {
+            color: black;
+            text-decoration: none;
+        }
+
+        td > a:hover {
+            color: green;
+            text-decoration: underline;
+        }
+
+        td > a:active {
+            color: black;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -41,6 +73,24 @@
         </c:if>
         </tbody>
     </table>
+    <div style="text-align: center">
+        <c:if test="${pageMaker.criteria.pageNum > pageMaker.pageCount}">
+            <a class="paging" href="/board?pageNum=${pageMaker.startPage - 1}">이전</a>
+        </c:if>
+
+        <c:forEach var="i" begin="${pageMaker.startPage}" end="${pageMaker.endPage}" step="1">
+            <c:if test="${i == pageMaker.criteria.pageNum}">
+                <a class="currentPaging" href="/board?pageNum=${i}">${i}</a>
+            </c:if>
+            <c:if test="${i != pageMaker.criteria.pageNum}">
+                <a class="paging" href="/board?pageNum=${i}">${i}</a>
+            </c:if>
+        </c:forEach>
+
+        <c:if test="${pageMaker.endPage < pageMaker.realEnd}">
+            <a class="paging" href="/board?pageNum=${pageMaker.endPage + 1}">다음</a>
+        </c:if>
+    </div>
     <a href="/board/write" class="btn">글 쓰기</a>
 </div>
 </body>

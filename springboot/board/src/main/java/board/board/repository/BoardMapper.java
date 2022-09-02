@@ -2,6 +2,7 @@ package board.board.repository;
 
 import board.board.domain.Board;
 import board.board.domain.BoardFile;
+import board.board.paging.Criteria;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -10,7 +11,9 @@ import java.util.Optional;
 
 @Mapper
 public interface BoardMapper {
-    List<Board> selectBoardList();
+    List<Board> selectBoardList(Criteria criteria);
+
+    int getSize();
 
     void insertBoard(Board board);
 

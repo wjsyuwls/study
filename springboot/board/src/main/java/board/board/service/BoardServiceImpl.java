@@ -2,6 +2,7 @@ package board.board.service;
 
 import board.board.domain.Board;
 import board.board.domain.BoardFile;
+import board.board.paging.Criteria;
 import board.board.repository.BoardMapper;
 import board.common.FileUtils;
 import lombok.RequiredArgsConstructor;
@@ -25,8 +26,13 @@ public class BoardServiceImpl implements BoardService {
     private final FileUtils fileUtils;
 
     @Override
-    public List<Board> selectBoardList() {
-        return boardMapper.selectBoardList();
+    public List<Board> selectBoardList(Criteria criteria) {
+        return boardMapper.selectBoardList(criteria);
+    }
+
+    @Override
+    public int getSize() {
+        return boardMapper.getSize();
     }
 
     @Override
